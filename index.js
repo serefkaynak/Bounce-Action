@@ -26,10 +26,10 @@ document.addEventListener("keydown", function (e) {
 const WIND_THRESHOLD = 1;
 
 setInterval(() => {
-  if (divPositionY < 0 || divPositionY > window.innerHeight - 50) {
+  if (divPositionY < 28 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
     yChange *= -1;
   }
-  if (divPositionX < 0 || divPositionX > window.innerWidth - 50) {
+  if (divPositionX < 28 || divPositionX > window.innerWidth - 78) { // 50 + 20 + 8= 78
     xChange *= -1;
   }
 

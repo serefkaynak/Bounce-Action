@@ -9,7 +9,7 @@ html {
       rgba(14, 126, 27, 1) 100%
     );
   }
-  h1 {
+  h1, h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -18,6 +18,8 @@ html {
     justify-content: center;
     color: honeydew;
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    z-index: 10;
+    position: relative;
   }
   
   #top {
@@ -108,12 +110,12 @@ html {
 
 #border {
   height: 100vh; 
-  margin: 50px auto;
+  max-height: 600px;
   position: relative;
   border: 20px solid #1a1a1a;
   border-radius: 15px;
   background-color: #088A29;
-  z-index: -3;
+  z-index: -10;
 }
 
   
