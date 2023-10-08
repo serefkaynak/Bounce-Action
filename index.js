@@ -47,18 +47,30 @@ document.addEventListener("keydown", function (e) {
 });
 
 //Mobilde click event ile tıklandığı takip edilebiliyor.
-document.querySelector(".arrow.up").addEventListener("click", function() {
-  yChange--;
+// Topun hareket alanı olarak body'yi seçtik.
+let body = document.body;
+
+// Hammer.js ile bu alana bir tanımlama yaptık.
+let hammer = new Hammer(body);
+
+// swipe hareketini tanımlayarak hangi yöne doğru yapıldığını algılayıp topu o yöne hareket ettiriyoruz.
+hammer.on("swipe", function(e) {
+    switch(e.direction) {
+        case Hammer.DIRECTION_UP:
+            yChange--;
+            break;
+        case Hammer.DIRECTION_DOWN:
+            yChange++;
+            break;
+        case Hammer.DIRECTION_LEFT:
+            xChange--;
+            break;
+        case Hammer.DIRECTION_RIGHT:
+            xChange++;
+            break;
+    }
 });
-document.querySelector(".arrow.down").addEventListener("click", function() {
-  yChange++;
-});
-document.querySelector(".arrow.left").addEventListener("click", function() {
-  xChange--;
-});
-document.querySelector(".arrow.right").addEventListener("click", function() {
-  xChange++;
-});
+
 
 const WIND_THRESHOLD = 20;
 const SECOND_BALL_TRESHOLD = 30;
