@@ -16,8 +16,8 @@ let secondTopDiv = document.getElementById("secondTop");
 //Third Ball Start 
 let thirdDivPositionX = Math.random() * window.innerWidth;
 let thirdDivPositionY = Math.random() * window.innerHeight;
-let thirdXChange = (Math.random() - 0.5) * 200;
-let thirdYChange = (Math.random() - 0.5) * 200;
+let thirdXChange = (Math.random() - 0.5) * 300;
+let thirdYChange = (Math.random() - 0.5) * 300;
 
 let thirdTopDiv = document.getElementById("thirdTop");
 //Third Ball Finish 
@@ -29,6 +29,7 @@ document.addEventListener("click", function (e) {
 
 const topDiv = document.getElementById("top");
 const borderDiv = document.getElementById("border");
+let homeDiv = document.getElementById("home");
 
 document.addEventListener("keydown", function (e) {
   if (e.code === "ArrowDown") {
@@ -42,9 +43,10 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const WIND_THRESHOLD = 30;
-const SECOND_BALL_TRESHOLD = 40;
-const THIRD_BALL_TRESHOLD = 50;
+const WIND_THRESHOLD = 20;
+const SECOND_BALL_TRESHOLD = 30;
+const THIRD_BALL_TRESHOLD = 25;
+const HOME_TRESHOLD = 60;
 
 setInterval(() => {
   if (divPositionY < 98 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
@@ -105,33 +107,43 @@ if (topWindEffectElement) {
 
     secondDivPositionX += secondXChange;
     secondDivPositionY += secondYChange;
+    secondTopDiv.style.display = "block";
 
     secondTopDiv.style.top = secondDivPositionY + "px";
     secondTopDiv.style.left = secondDivPositionX + "px";
+} else {
+  secondTopDiv.style.display = "none";
 }
 
   // Eğer THIRD_BALL_TRESHOLD aşılırsa, üçüncü top rastgele hareket eder
   if (Math.abs(xChange) > THIRD_BALL_TRESHOLD || Math.abs(yChange) > THIRD_BALL_TRESHOLD) {
-    // İkinci topun sınırları kontrolü
+    // ücuncü topun sınırları kontrolü
     if (thirdDivPositionY < 98 || thirdDivPositionY > window.innerHeight - 78) {
       thirdYChange *= -1;
     }
     if (thirdDivPositionX < 28 || thirdDivPositionX > window.innerWidth - 78) {
       thirdXChange *= -1;
-    
       }
 
       thirdDivPositionX += thirdXChange;
       thirdDivPositionY += thirdYChange;
+      thirdTopDiv.style.display = "block";
 
 
       thirdTopDiv.style.top = thirdDivPositionY + "px";
       thirdTopDiv.style.left = thirdDivPositionX + "px";
+} else {
+  thirdTopDiv.style.display = "none";
 }
 
+// Eğer HOME_TRESHOLD aşılırsa, evi göster
+if (Math.abs(xChange) > HOME_TRESHOLD || Math.abs(yChange) > HOME_TRESHOLD) {
+  homeDiv.style.display = "block";
+} else {
+  homeDiv.style.display = "none";
+}
 
 }, 100);
-
 
 
 
