@@ -119,4 +119,31 @@ html {
   z-index: -10;
 }
 
+/* Second Top CSS */
+#secondTop {
+  background: radial-gradient(circle, rgb(100, 118, 200) 0%, rgba(10,50,120,1) 100%);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  transition: 0.1s;
+  box-shadow: 0 10px 5px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Second Top CSS */
+#thirdTop {
+  background: radial-gradient(circle, rgb(221, 23, 23) 0%, rgba(10,50,120,1) 100%);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  transition: 0.1s;
+  box-shadow: 0 10px 5px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 1;
+}
+
+
   

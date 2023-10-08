@@ -4,6 +4,25 @@ let divPositionY = window.innerHeight / 2;
 let xChange = 0;
 let yChange = 0;
 
+//Second Ball Start 
+let secondDivPositionX = Math.random() * window.innerWidth;
+let secondDivPositionY = Math.random() * window.innerHeight;
+let secondXChange = (Math.random() - 0.5) * 100;
+let secondYChange = (Math.random() - 0.5) * 100;
+
+let secondTopDiv = document.getElementById("secondTop");
+//Second Ball Finish
+
+//Third Ball Start 
+let thirdDivPositionX = Math.random() * window.innerWidth;
+let thirdDivPositionY = Math.random() * window.innerHeight;
+let thirdXChange = (Math.random() - 0.5) * 200;
+let thirdYChange = (Math.random() - 0.5) * 200;
+
+let thirdTopDiv = document.getElementById("thirdTop");
+//Third Ball Finish 
+
+
 document.addEventListener("click", function (e) {
   contextDiv.classList.add("hide");
 });
@@ -23,7 +42,9 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const WIND_THRESHOLD = 40;
+const WIND_THRESHOLD = 30;
+const SECOND_BALL_TRESHOLD = 40;
+const THIRD_BALL_TRESHOLD = 50;
 
 setInterval(() => {
   if (divPositionY < 98 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
@@ -31,6 +52,7 @@ setInterval(() => {
   }
   if (divPositionX < 28 || divPositionX > window.innerWidth - 78) { // 50 + 20 + 8= 78
     xChange *= -1;
+
   }
 
   // Sürtünme kaynaklı hız azalması
@@ -66,11 +88,47 @@ if (topWindEffectElement) {
   // Rüzgar efekti kontrolü
   if (Math.abs(xChange) > WIND_THRESHOLD || Math.abs(yChange) > WIND_THRESHOLD) {
     topDiv.classList.add("windEffect");
-    
-
   } else {
     topDiv.classList.remove("windEffect");
   };
+
+  // Eğer SECOND_BALL_TRESHOLD aşılırsa, ikinci top rastgele hareket eder
+  if (Math.abs(xChange) > SECOND_BALL_TRESHOLD || Math.abs(yChange) > SECOND_BALL_TRESHOLD) {
+    // İkinci topun sınırları kontrolü
+    if (secondDivPositionY < 98 || secondDivPositionY > window.innerHeight - 78) {
+        secondYChange *= -1;
+    }
+    if (secondDivPositionX < 28 || secondDivPositionX > window.innerWidth - 78) {
+        secondXChange *= -1;
+    
+      }
+
+    secondDivPositionX += secondXChange;
+    secondDivPositionY += secondYChange;
+
+    secondTopDiv.style.top = secondDivPositionY + "px";
+    secondTopDiv.style.left = secondDivPositionX + "px";
+}
+
+  // Eğer THIRD_BALL_TRESHOLD aşılırsa, üçüncü top rastgele hareket eder
+  if (Math.abs(xChange) > THIRD_BALL_TRESHOLD || Math.abs(yChange) > THIRD_BALL_TRESHOLD) {
+    // İkinci topun sınırları kontrolü
+    if (thirdDivPositionY < 98 || thirdDivPositionY > window.innerHeight - 78) {
+      thirdYChange *= -1;
+    }
+    if (thirdDivPositionX < 28 || thirdDivPositionX > window.innerWidth - 78) {
+      thirdXChange *= -1;
+    
+      }
+
+      thirdDivPositionX += thirdXChange;
+      thirdDivPositionY += thirdYChange;
+
+
+      thirdTopDiv.style.top = thirdDivPositionY + "px";
+      thirdTopDiv.style.left = thirdDivPositionX + "px";
+}
+
 
 }, 100);
 
