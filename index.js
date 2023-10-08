@@ -46,6 +46,20 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+//Mobilde click event ile tıklandığı takip edilebiliyor.
+document.querySelector(".arrow.up").addEventListener("click", function() {
+  yChange--;
+});
+document.querySelector(".arrow.down").addEventListener("click", function() {
+  yChange++;
+});
+document.querySelector(".arrow.left").addEventListener("click", function() {
+  xChange--;
+});
+document.querySelector(".arrow.right").addEventListener("click", function() {
+  xChange++;
+});
+
 const WIND_THRESHOLD = 20;
 const SECOND_BALL_TRESHOLD = 30;
 const THIRD_BALL_TRESHOLD = 25;
