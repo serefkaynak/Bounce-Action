@@ -23,7 +23,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const WIND_THRESHOLD = 1;
+const WIND_THRESHOLD = 40;
 
 setInterval(() => {
   if (divPositionY < 98 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
@@ -47,10 +47,29 @@ setInterval(() => {
   topDiv.style.top = divPositionY + "px";
   topDiv.style.left = divPositionX + "px";
 
+  // Topun backroundunu değiştirmek
+function getRandomDegree() {
+  return Math.floor(Math.random() * 361);
+}
+let randomDeg = getRandomDegree();
+
+// Bu dereceyi kullanarak #top.windeffect background'u ayarla
+let topWindEffectElement = document.querySelector("#top.windEffect");
+if (topWindEffectElement) {
+    topWindEffectElement.style.background = `linear-gradient(${randomDeg}deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%)`;
+    
+    //body backroundunu da aynı değiştiriyoruz.
+    document.body.style.background = `linear-gradient(${randomDeg}deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%)`;
+
+  }
+
   // Rüzgar efekti kontrolü
   if (Math.abs(xChange) > WIND_THRESHOLD || Math.abs(yChange) > WIND_THRESHOLD) {
     topDiv.classList.add("windEffect");
+    
 
+  } else {
+    topDiv.classList.remove("windEffect");
   };
 
 }, 100);

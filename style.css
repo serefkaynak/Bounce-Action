@@ -74,12 +74,13 @@ html {
 
   /* Rüzgar Efekti */
 
-.windEffect {
+#top.windEffect {
     content: "";
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 50px;
+    height: 50px;
     background-color: rgba(209, 28, 170, 0.3);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%);
     border-radius: 50%;
     z-index: -2;
     transition: transform 0.50s, opacity 1;
