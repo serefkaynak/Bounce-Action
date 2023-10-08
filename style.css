@@ -17,9 +17,23 @@ html {
     align-items: center;
     justify-content: center;
     color: honeydew;
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
     z-index: 10;
     position: relative;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
+  }
+
+  #userPoint {
+    color: floralwhite;
+    font-size: x-large;
   }
   
   #top {
@@ -110,8 +124,7 @@ html {
 }
 
 #border {
-  height: 100vh; 
-  max-height: 600px;
+  height: 85vh; 
   position: relative;
   border: 20px solid #1a1a1a;
   border-radius: 15px;
@@ -154,4 +167,16 @@ html {
 
 #home img {
   max-height: 50px;
+}
+
+#moveIcon {
+  position: fixed;
+  bottom: 10%;
+  right: 10%; 
+  z-index: 10000; 
+}
+
+#moveIcon img {
+  max-height: 100px;      /* İkonun maksimum yüksekliği */
+  cursor: move;          /* İmlecin üzerine geldiğinde 'taşıma' kursoru göster */
 }

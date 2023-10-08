@@ -29,7 +29,10 @@ document.addEventListener("click", function (e) {
 
 const topDiv = document.getElementById("top");
 const borderDiv = document.getElementById("border");
-let homeDiv = document.getElementById("home");
+const homeDiv = document.getElementById("home");
+const userPoint = document.getElementById("userPoint");
+
+
 
 document.addEventListener("keydown", function (e) {
   if (e.code === "ArrowDown") {
@@ -77,7 +80,7 @@ function getRandomDegree() {
 }
 let randomDeg = getRandomDegree();
 
-// Bu dereceyi kullanarak #top.windeffect background'u ayarla
+// Bu dereceyi kullanarak #top.windeffect'e uyguluyoruz.
 let topWindEffectElement = document.querySelector("#top.windEffect");
 if (topWindEffectElement) {
     topWindEffectElement.style.background = `linear-gradient(${randomDeg}deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%)`;
@@ -143,8 +146,17 @@ if (Math.abs(xChange) > HOME_TRESHOLD || Math.abs(yChange) > HOME_TRESHOLD) {
   homeDiv.style.display = "none";
 }
 
-}, 100);
+//Eğer topların konumları birbirleriyle yakın noktadan geçerse userPoint'e puan ekle
+if (Math.abs(divPositionX - secondDivPositionX) < 50 && Math.abs(divPositionY - secondDivPositionY) < 20) {
+  userPoint.innerText = parseInt(userPoint.innerText) + 10;
+} else if (Math.abs(divPositionX - thirdDivPositionX) < 50 && Math.abs(divPositionY - thirdDivPositionY) < 20) {
+  userPoint.innerText = parseInt(userPoint.innerText) + 20;
+} else if (Math.abs(divPositionX - homeDiv.offsetLeft) < 50 && Math.abs(divPositionY - homeDiv.offsetTop) < 20) {
+  userPoint.innerText = parseInt(userPoint.innerText) + +100;
+}
 
+
+}, 100);
 
 
 const contextDiv = document.getElementById("context-menu");
