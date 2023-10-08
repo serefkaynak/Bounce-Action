@@ -26,7 +26,7 @@ document.addEventListener("keydown", function (e) {
 const WIND_THRESHOLD = 1;
 
 setInterval(() => {
-  if (divPositionY < 28 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
+  if (divPositionY < 98 || divPositionY > window.innerHeight - 78) { // 50 + 20 + 8= 78
     yChange *= -1;
   }
   if (divPositionX < 28 || divPositionX > window.innerWidth - 78) { // 50 + 20 + 8= 78
